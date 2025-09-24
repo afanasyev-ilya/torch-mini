@@ -1,0 +1,58 @@
+{
+  "version": 5,
+  "cmakeMinimumRequired": { "major": 3, "minor": 24 },
+  "configurePresets": [
+    {
+      "name": "dev-debug",
+      "displayName": "Dev Debug (Ninja, clang/gcc)",
+      "generator": "Ninja",
+      "binaryDir": "build/dev-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_COMPILER_LAUNCHER": "ccache",
+        "TORCH_MINI_ENABLE_TESTING": "ON",
+        "TORCH_MINI_ENABLE_SANITIZERS": "OFF"
+      }
+    },
+    {
+      "name": "dev-release",
+      "displayName": "Dev Release (Ninja)",
+      "generator": "Ninja",
+      "binaryDir": "build/dev-release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "TORCH_MINI_ENABLE_TESTING": "ON",
+        "TORCH_MINI_ENABLE_IPO": "ON"
+      }
+    },
+    {
+      "name": "ci-debug",
+      "displayName": "CI Debug (Ninja)",
+      "generator": "Ninja",
+      "binaryDir": "build/ci-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "TORCH_MINI_ENABLE_TESTING": "ON",
+        "TORCH_MINI_WARNINGS_AS_ERRORS": "ON",
+        "TORCH_MINI_ENABLE_SANITIZERS": "OFF"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "dev-debug", "configurePreset": "dev-debug" },
+    { "name": "dev-release", "configurePreset": "dev-release" },
+    { "name": "ci-debug", "configurePreset": "ci-debug" }
+  ],
+  "testPresets": [
+    {
+      "name": "dev-debug",
+      "configurePreset": "dev-debug",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "ci-debug",
+      "configurePreset": "ci-debug",
+      "output": { "outputOnFailure": true }
+    }
+  ]
+}

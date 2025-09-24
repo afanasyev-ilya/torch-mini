@@ -1,0 +1,10 @@
+function(torch_mini_enable_sanitizers TARGET)
+  if(NOT TORCH_MINI_ENABLE_SANITIZERS)
+    return()
+  endif()
+
+  if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU" AND CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_options(${TARGET} PRIVATE -fsanitize=address,undefined)
+    target_link_options(${TARGET} PRIVATE -fsanitize=address,undefined)
+  endif()
+endfunction()
