@@ -65,5 +65,7 @@
         "set": "cpp",
         "stack": "cpp",
         "unordered_set": "cpp"
-    }
+    },
+    "cmake.useCMakePresets": "always",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }
