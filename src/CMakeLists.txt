@@ -35,4 +35,4 @@ if(TORCH_MINI_ENABLE_IPO)
 endif()
 
 # Nice alias for consumers
-add_library(torch_mini::core ALIAS torch_mini_core)
+add_library(torchmini::core ALIAS torch_mini_core)

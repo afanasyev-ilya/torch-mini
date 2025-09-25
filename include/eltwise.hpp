@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <cstddef>
 
-namespace torch_mini {
+namespace torchmini {
 
 
 inline void eltwise_add(std::span<const float> a,
